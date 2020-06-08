@@ -46,3 +46,11 @@ Things you may want to cover:
 
   例：validates :name, presence: true, length: { maximum: 20 }
   presence: trueは値が空ではないということ確かめるバリデーション
+
+  ## render と redirect_to の違い
+
+  エラー画面などのviewのみを表示させたい時は render
+
+  データ更新などのcontrollerの処理が必要な場合は redirect_to
+
+  参照：https://qiita.com/morikuma709/items/e9146465df2d8a094d78
