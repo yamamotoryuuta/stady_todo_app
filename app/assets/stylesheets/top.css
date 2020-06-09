@@ -35,11 +35,52 @@
   margin: 0;
 }
 
-.topPage .listWrapper .list_header_action .fa-pen, .topPage .listWrapper .list_header_action .fa-trash {
+.topPage .listWrapper .list_header_action .fa-pen,
+.topPage .listWrapper .list_header_action .fa-trash {
   font-size: 18px;
   color: #8c8c8c;
 }
 
 .topPage .listWrapper .list_header_action .fa-trash {
   margin-right: 10px;
+}
+
+.topPage .listWrapper .list .cardWrapper {
+  overflow-y: scroll;
+  max-height: 76vh;
+}
+
+.topPage .listWrapper .list .cardWrapper .cardDetail_link {
+  text-decoration: none;
+  color: #323232;
+}
+
+.topPage .listWrapper .list .cardWrapper .card {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.topPage .listWrapper .list .cardWrapper .card_title {
+  font-size: 17px;
+}
+
+.topPage .listWrapper .list .cardWrapper .card_detail {
+  display: none;
+}
+
+.topPage .listWrapper .list .cardWrapper .card_detail.is-exist {
+  display: block;
+  color: #999;
+}
+
+.topPage .listWrapper .list .cardWrapper .card_detail.is-exist > i {
+  display: block;
+}
+
+.topPage .listWrapper .list .cardWrapper .addCard {
+  color: #8c8c8c;
+}
+
+.topPage .listWrapper .list .cardWrapper .addCard_link {
+  color: #8c8c8c;
 }

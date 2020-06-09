@@ -54,3 +54,51 @@ Things you may want to cover:
   データ更新などのcontrollerの処理が必要な場合は redirect_to
 
   参照：https://qiita.com/morikuma709/items/e9146465df2d8a094d78
+
+  ## routes をネストする
+  ルーティングをネスト（入れ子）にすることで、親子関係をルーティングで表すことができます。cardに関してはlistに対して「子」の関係になるので、ネストすることで、どのリストに紐づくかを明示できます。
+  例：
+  resources :list, only: %i(new create edit update destroy) do
+    resources :card, only: %i(new create)
+  end
+
+  ## link_toにdoを使っています。画像や要素をリンクにしたい場合、link_toでブロック構文を利用します。
+
+  <%= link_to パス do %>
+  ...
+  <% end %>
+
+              <%= link_to list_card_path(list, card), class:"cardDetail_link" do %>
+              ここから
+                <div class="card">
+                  <h3 class="card_title"><%= card.title %></h3>
+                  <% if card.memo.size > 0 %>
+                    <div class="card_detail is-exist"><i class="fas fa-bars"></i></div>
+                  <% end %>
+                </div>
+              ここまでをリンクにしたいので do を使ってリンクにブロックを構成している
+              <% end %>
+
+## only と except 
+only 指定されたルーティングだけを生成
+except 指定したルーティングのみを生成しない
+
+## link_toでボタンをクリックしたら、確認用のアラートを出したい時
+ <%= link_to 'リンク名', パス,data: { アラートさせたい内容 } %>
+ 例：
+
+ <%= link_to '削除をする', パス, class: "text-danger delete_btn", method: :delete, data: { confirm: "このカードを削除して大丈夫ですか?" } %>
+
+ # select 使い方
+ select プロパティ名, タグの情報, {オプション}, {HTMLオプション}
+- プロパティ名 : カラム名 (下記に補足あり)
+- タグの情報 : セレクトボックス表示に使うデータの配列 or ハッシュ
+- オプション : セレクトボックスのオプション（include_blank, selectedなど）
+- HTMLオプション : HTMLのオプション (id, classなど)
+参照： https://310nae.com/rails-selectbox/
+
+例：
+<%= select :card, :list_id, @lists.map{ |l| [l.title, l.id] }, {}, { class: 'form-control' } %>
+
+
+
